@@ -1,7 +1,7 @@
 "use strict"
 function solveEquation(a, b, c) {
-  let arr = [];
-  let discriminant = Math.pow(b, 2) - 4 * a * c;
+  const arr = [];
+  const discriminant = Math.pow(b, 2) - 4 * a * c;
 
   if (discriminant === 0) {
     arr.push(-b / (2 * a));
@@ -14,9 +14,9 @@ function solveEquation(a, b, c) {
 }
 
 function calculateTotalMortgage(percent, contribution, amount, countMonths) {
-  let percentMonth = percent / (100 * 12);
-  let loanBody = amount - contribution;
-  let monthlyPayment = loanBody * (percentMonth + (percentMonth / ((Math.pow(1 + percentMonth, countMonths) - 1))));
+  const percentMonth = percent / (100 * 12);
+  const loanBody = amount - contribution;
+  const monthlyPayment = loanBody * (percentMonth + (percentMonth / ((Math.pow(1 + percentMonth, countMonths) - 1))));
   let totalSum = monthlyPayment * countMonths;
   totalSum = Number(totalSum.toFixed(2));
 

@@ -9,64 +9,53 @@ function getArrayParams(...arr) {
 }
 
 function summElementsWorker(...arr) {
-  let result = 0;
+  if (arr.length === 0) return 0;
 
-  if (arr.length > 0) {
-    let initValue = 0;
-    result = arr.reduce((prevValue, curValue) => prevValue + curValue, initValue);
-  }
+  let initValue = 0;
 
-  return result;
+  return arr.reduce((prevValue, curValue) => prevValue + curValue, initValue);
 }
 
 function differenceMaxMinWorker(...arr) {
-  let result = 0;
+  if (arr.length === 0) return 0;
 
-  if (arr.length > 0) {
-    const min = Math.min.apply(null, arr);
-    const max = Math.max.apply(null, arr);
-    result = max - min;
-    result = Number.isFinite(result) ? result : 0;
-  }
+  const min = Math.min.apply(null, arr);
+  const max = Math.max.apply(null, arr);
+  let result = max - min;
+  result = Number.isFinite(result) ? result : 0;
 
   return result;
 }
 
 function differenceEvenOddWorker(...arr) {
-  let result = 0;
+  if (arr.length === 0) return 0;
 
-  if (arr.length > 0) {
-    let sumEvenElement = 0;
-    let sumOddElement = 0;
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i] % 2 === 0) {
-        sumEvenElement += arr[i];
-      } else {
-        sumOddElement += arr[i];
-      }
+  let sumEvenElement = 0;
+  let sumOddElement = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
+      sumEvenElement += arr[i];
+    } else {
+      sumOddElement += arr[i];
     }
-    result = sumEvenElement - sumOddElement;
   }
 
-  return result;
+  return sumEvenElement - sumOddElement;
 }
 
 function averageEvenElementsWorker(...arr) {
-  let result = 0;
+  if (arr.length === 0) return 0;
 
-  if (arr.length > 0) {
-    let sumEvenElement = 0;
-    let countEvenElement = 0;
-    for (let i = 0; i < arr.length; i++) {
-      if (arr[i] % 2 === 0) {
-        sumEvenElement += arr[i];
-        countEvenElement++;
-      }
+  let sumEvenElement = 0;
+  let countEvenElement = 0;
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i] % 2 === 0) {
+      sumEvenElement += arr[i];
+      countEvenElement++;
     }
-    result = sumEvenElement / countEvenElement;
   }
 
-  return result;
+  return sumEvenElement / countEvenElement;
 }
 
 function makeWork (arrOfArr, func) {
