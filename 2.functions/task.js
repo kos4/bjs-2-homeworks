@@ -1,30 +1,24 @@
 function getArrayParams(...arr) {
-  const min = Math.min.apply(null, arr);
-  const max = Math.max.apply(null, arr);
-  let avg = 0;
-  const sum = arr.reduce((prevValue, curValue) => prevValue + curValue, avg);
-  avg = Number((sum / arr.length).toFixed(2));
-
-  return { min: min, max: max, avg: avg };
+  return {
+    min: Math.min.apply(null, arr),
+    max: Math.max.apply(null, arr),
+    avg: Number(
+      arr.reduce((acc, item) => acc + item / arr.length , 0
+    ).toFixed(2)),
+  };
 }
 
 function summElementsWorker(...arr) {
   if (arr.length === 0) return 0;
 
-  let initValue = 0;
-
-  return arr.reduce((prevValue, curValue) => prevValue + curValue, initValue);
+  return arr.reduce((acc, item) => acc + item, 0);
 }
 
 function differenceMaxMinWorker(...arr) {
   if (arr.length === 0) return 0;
 
-  const min = Math.min.apply(null, arr);
-  const max = Math.max.apply(null, arr);
-  let result = max - min;
-  result = Number.isFinite(result) ? result : 0;
-
-  return result;
+  let result = Math.max.apply(null, arr) - Math.min.apply(null, arr);
+  return Number.isFinite(result) ? result : 0;
 }
 
 function differenceEvenOddWorker(...arr) {
@@ -46,27 +40,26 @@ function differenceEvenOddWorker(...arr) {
 function averageEvenElementsWorker(...arr) {
   if (arr.length === 0) return 0;
 
-  let sumEvenElement = 0;
   let countEvenElement = 0;
-  for (let i = 0; i < arr.length; i++) {
-    if (arr[i] % 2 === 0) {
-      sumEvenElement += arr[i];
+  let sumEvenElement = 0;
+  arr.reduce((acc, item) => {
+    if (item % 2 === 0) {
+      sumEvenElement += item;
       countEvenElement++;
     }
-  }
+  }, 0)
 
   return sumEvenElement / countEvenElement;
 }
 
 function makeWork (arrOfArr, func) {
-  let maxWorkerResult = -Infinity;
-  for (let i = 0; i < arrOfArr.length; i++) {
-    const tmp = func(...arrOfArr[i]);
-
-    if (tmp > maxWorkerResult) {
-      maxWorkerResult = tmp;
+  let result = 0;
+  arrOfArr.reduce((acc, item) => {
+    const tmp = func(...item);
+    if (tmp > result) {
+      result = tmp;
     }
-  }
+  }, 0);
 
-  return maxWorkerResult;
+  return result;
 }

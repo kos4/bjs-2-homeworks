@@ -11,21 +11,14 @@ Student.prototype.setSubject = function (subjectName) {
 
 Student.prototype.addMarks = function (...marks) {
   if (this.hasOwnProperty('marks')) {
-    this.marks = [...this.marks, ...marks];
+    this.marks.push(...marks);
   }
 }
 
 Student.prototype.getAverage = function () {
   if (!this.hasOwnProperty('marks') || this.marks.length === 0) return 0;
 
-  let sum = 0;
-
-  return this.marks.reduce((acc, item, index, arr) => {
-    sum += item;
-
-    if (arr.length === index + 1) {
-      return sum / arr.length;
-    }}, 0);
+  return this.marks.reduce((acc, item, index, arr) => acc + item / arr.length, 0);
 }
 
 Student.prototype.exclude = function (reason) {
