@@ -68,7 +68,7 @@ class Library {
     if (book.state > 30) this.books.push(book);
   }
 
-  findBookBy(type, value) {
+  /*findBookBy(type, value) {
     let result = null;
     this.books.forEach((item, index) => {
       if (String(item[type]).indexOf(value) > -1) {
@@ -79,13 +79,26 @@ class Library {
     })
 
     return result;
+  }*/
+
+  findBookBy(type, value) {
+    const findResult = this.books.find((item) => item[type] === value);
+    return findResult || null;
   }
 
-  giveBookByName(bookName) {
+
+  /*giveBookByName(bookName) {
     let book = this.findBookBy('name', bookName);
 
     if (book) this.books.splice(book.indexLibray, 1);
 
+    return book;
+  }*/
+
+  giveBookByName(bookName) {
+    const book = this.findBookBy("name", bookName);
+    if (!book) return null;
+    this.books = this.books.filter((item) => item.name !== bookName);
     return book;
   }
 }
