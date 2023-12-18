@@ -35,7 +35,7 @@ class AlarmClock {
 
   getCurrentFormattedTime () {
     const date = new Date();
-    return (date.getHours() > 9 ? date.getHours() : "0" + date.getHours()) + ":" + date.getMinutes();
+    return (date.getHours() > 9 ? date.getHours() : "0" + date.getHours()) + ":" + (date.getMinutes() > 9 ? date.getMinutes() : "0" + date.getMinutes());
   }
 
   start () {
