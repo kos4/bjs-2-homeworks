@@ -1,6 +1,9 @@
 ﻿function parseCount(value) {
   value = Number.parseFloat(value);
-  if (isNaN(value)) throw new Error('Невалидное значение');
+
+  if (isNaN(value)) {
+    throw new Error('Невалидное значение');
+  }
 
   return value;
 }

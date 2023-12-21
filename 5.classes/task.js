@@ -65,7 +65,9 @@ class Library {
   }
 
   addBook(book) {
-    if (book.state > 30) this.books.push(book);
+    if (book.state > 30) {
+      this.books.push(book);
+    }
   }
 
   /*findBookBy(type, value) {
@@ -97,7 +99,11 @@ class Library {
 
   giveBookByName(bookName) {
     const book = this.findBookBy("name", bookName);
-    if (!book) return null;
+
+    if (!book) {
+      return null;
+    }
+
     this.books = this.books.filter((item) => item.name !== bookName);
     return book;
   }
@@ -142,7 +148,9 @@ class Student {
   }
 
   addMark(mark, subject) {
-    if (mark < 2 || mark > 5) return;
+    if (mark < 2 || mark > 5) {
+      return;
+    }
 
     if (!this.marks.hasOwnProperty(subject)) {
       this.marks[subject] = [];
@@ -152,7 +160,9 @@ class Student {
   }
 
   getAverageBySubject(subject) {
-    if (!this.marks.hasOwnProperty(subject)) return 0;
+    if (!this.marks.hasOwnProperty(subject)) {
+      return 0;
+    }
 
     return this.marks[subject].reduce((acc, item, index, arr) => acc + item / arr.length, 0);
   }
